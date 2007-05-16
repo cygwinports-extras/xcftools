@@ -1,0 +1,40 @@
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x Makefile.in.in -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x mdate-sh -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' -x texinfo.tex -x ylwrap -x configure -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x omf.make -x xmldocs.make -x '*.po' origsrc/xcftools-1.0.4/Makefile.in src/xcftools-1.0.4/Makefile.in
+--- origsrc/xcftools-1.0.4/Makefile.in	2006-02-22 14:00:19.000000000 -0600
++++ src/xcftools-1.0.4/Makefile.in	2007-05-16 11:58:08.758621200 -0500
+@@ -30,8 +30,8 @@
+ program_transform_name	= @program_transform_name@
+ 
+ CFLAGS			= @CFLAGS@
+-LDFLAGS			= @LDFLAGS@ @LIBICONV@
+-LIBS			= @LIBS@
++LDFLAGS			= @LDFLAGS@
++LIBS			= @LIBS@ @LTLIBINTL@ @LTLIBICONV@
+ 
+ INSTALL			= @INSTALL@
+ INSTALL_PROGRAM		= @INSTALL_PROGRAM@
+@@ -70,21 +70,21 @@
+ all: $(BINARIES) $(SCRIPTS) $(MANPAGES) po/stamp manpo/all
+ 
+ xcfinfo$e: xcfinfo.$o $(FILEIO).$o enums.$o xcf-general.$o utils.$o nlsini.$o
+-	$(CC) $(LDFLAGS) $(LIBS) $^ -o $@
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ xcf2pnm$e: xcf2pnm.$o $(FILEIO).$o enums.$o xcf-general.$o utils.$o nlsini.$o \
+ 	   pixels.$o flatten.$o flatspec.$o scaletab.$o table.$o
+-	$(CC) $(LDFLAGS) $(LIBS) $^ -o $@
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ xcf2png$e: xcf2png.$o $(FILEIO).$o enums.$o xcf-general.$o utils.$o nlsini.$o \
+ 	   pixels.$o flatten.$o flatspec.$o scaletab.$o table.$o palette.$o
+-	$(CC) $(LDFLAGS) $(LIBS) -lpng $^ -o $@
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS) -lpng
+ 
+ xcfview: xcfview.in Makefile
+ 	sed '1s,/usr/bin/perl,@PERL@,' < $< > $@
+ 
+ testscale$e: testscale.$o
+-	$(CC) $(LDFLAGS) $(LIBS) $^ -o $@
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ install: all
+ 	for p in $(BINARIES) ; do \

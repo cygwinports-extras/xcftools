@@ -1,0 +1,80 @@
+xcftools
+------------------------------------------
+Xcftools is a set of fast command-line tools for extracting
+information from the Gimp's native file format XCF. The tools
+are designed to allow efficient use of layered XCF files as
+sources in a build system that use 'make' and similar tools
+to manage automatic processing of the graphics. These tools
+work independently of the Gimp engine and do not require the
+Gimp to even be installed.
+
+Runtime requirements:
+  cygwin-1.5.24-2
+  libiconv2-1.11-1
+  libintl8-0.15-1
+  libpng12-1.2.12-1
+
+Build requirements:
+(besides corresponding -devel packages)
+  cygwin-1.5.24-2
+  autoconf2.5-2.61-1
+  automake1.10-1.10-1
+  binutils-20060817-1
+  cygport-0.2.11-1
+  gawk-3.1.5-4
+  gcc-core-3.4.4-3
+  make-3.81-1
+  perl-5.8.7-5
+  sed-4.1.5-2
+
+Canonical website:
+  http://henning.makholm.net/software
+
+Canonical download:
+  http://henning.makholm.net/xcftools
+
+-------------------------------------------
+
+Build instructions:
+  unpack xcftools-1.0.4-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./xcftools-1.0.4-X.cygport all
+
+This will create:
+  /usr/src/xcftools-1.0.4-X-src.tar.bz2
+  /usr/src/xcftools-1.0.4-X.tar.bz2
+
+-------------------------------------------
+
+Files included in the binary package:
+
+  /usr/bin/xcf2png.exe
+  /usr/bin/xcf2pnm.exe
+  /usr/bin/xcfinfo.exe
+  /usr/bin/xcfview
+  /usr/share/doc/Cygwin/xcftools-1.0.4.README
+  /usr/share/doc/xcftools-1.0.4/COPYING
+  /usr/share/doc/xcftools-1.0.4/ChangeLog
+  /usr/share/doc/xcftools-1.0.4/README
+  /usr/share/locale/da/LC_MESSAGES/xcftools.mo
+  /usr/share/man/da/man1/xcf2png.1.gz
+  /usr/share/man/da/man1/xcf2pnm.1.gz
+  /usr/share/man/da/man1/xcfinfo.1.gz
+  /usr/share/man/da/man1/xcfview.1.gz
+  /usr/share/man/man1/xcf2png.1.gz
+  /usr/share/man/man1/xcf2pnm.1.gz
+  /usr/share/man/man1/xcfinfo.1.gz
+  /usr/share/man/man1/xcfview.1.gz
+
+------------------
+
+Port Notes:
+
+----- version 1.0.4-1 -----
+Initial release for Cygwin.
+
+
+Cygwin port maintained by:
+http://cygwinports.dotsrc.org/

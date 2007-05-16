@@ -1,0 +1,19 @@
+DESCRIPTION="Console XCF graphics tools"
+HOMEPAGE="http://henning.makholm.net/software"
+SRC_URI="http://henning.makholm.net/${PN}/${P}.tar.gz"
+
+DIFF_EXCLUDES='*.po'
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygautoreconf
+	CYGCONF_SOURCE=. cygconf --enable-precomputed-scaletable
+	cygmake -j1
+}
+
+src_install() {
+	cd ${B}
+	dodir /usr/bin /usr/share/man/man1
+	USE_DESTDIR=0 cyginstall -j1
+}
