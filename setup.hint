@@ -1,5 +1,5 @@
 category: Graphics
-requires: cygwin libiconv2 libintl8 libpng12
+requires: libiconv2 libintl8 libpng12
 sdesc: "XCF graphics command-line tools"
 ldesc: "Xcftools is a set of fast command-line tools for extracting
 information from the Gimp's native file format XCF. The tools
