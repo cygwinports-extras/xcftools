@@ -1,5 +1,5 @@
 NAME="xcftools"
-VERSION=1.0.4
+VERSION=1.0.7
 RELEASE=1
 CATEGORY="Graphics"
 SUMMARY="XCF graphics command-line tools"
@@ -11,7 +11,11 @@ graphics. These tools work independently of the Gimp engine and do not
 require the Gimp to even be installed."
 HOMEPAGE="http://henning.makholm.net/software"
 SRC_URI="http://henning.makholm.net/xcftools/xcftools-${VERSION}.tar.gz"
-PATCH_URI="1.0.4-as-needed.patch"
+PATCH_URI="
+	http://pkgs.fedoraproject.org/cgit/rpms/xcftools.git/plain/replace_png_null_macros.patch
+	1.0.4-as-needed.patch
+	1.0.7-debuginfo.patch
+"
 
 DIFF_EXCLUDES='*.po'
 

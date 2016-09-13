@@ -1,0 +1,10 @@
+--- origsrc/xcftools-1.0.7/Makefile.in	2016-09-13 02:12:24.894796400 -0500
++++ src/xcftools-1.0.7/Makefile.in	2016-09-13 02:17:34.507179900 -0500
+@@ -89,7 +89,6 @@ testscale$e: testscale.$o
+ 
+ install: all
+ 	for p in $(BINARIES) ; do \
+-	  case $$p in xcfview) strip= ;; *) strip=-s ;; esac ; \
+ 	  $(INSTALL_PROGRAM) $$strip $$p \
+ 	    $(DESTDIR)$(bindir)/`echo $$p | $(SED) $(program_transform_name)` \
+ 	    || exit 1 ;\
