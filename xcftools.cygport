@@ -1,0 +1,30 @@
+NAME="xcftools"
+VERSION=1.0.4
+RELEASE=1
+CATEGORY="Graphics"
+SUMMARY="XCF graphics command-line tools"
+DESCRIPTION="Xcftools is a set of fast command-line tools for extracting
+information from the Gimp's native file format XCF. The tools are designed
+to allow efficient use of layered XCF files as sources in a build system
+that use 'make' and similar tools to manage automatic processing of the
+graphics. These tools work independently of the Gimp engine and do not
+require the Gimp to even be installed."
+HOMEPAGE="http://henning.makholm.net/software"
+SRC_URI="http://henning.makholm.net/xcftools/xcftools-${VERSION}.tar.gz"
+PATCH_URI="1.0.4-as-needed.patch"
+
+DIFF_EXCLUDES='*.po'
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygautoreconf
+	CYGCONF_SOURCE=. cygconf --enable-precomputed-scaletable
+	cygmake -j1
+}
+
+src_install() {
+	cd ${B}
+	dodir /usr/bin /usr/share/man/man1
+	USE_DESTDIR=0 cyginstall -j1
+}
